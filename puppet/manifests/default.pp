@@ -1,6 +1,9 @@
 class { 'php':
 }
 
+class { 'mysql' :
+}
+
 class { 'apache':
 	default_vhost	=> false,
 }
