@@ -1,11 +1,4 @@
-#!/bin/bash
-
 # Open port 80
-export ran_scripts=/.provisioning-stuff
-if [ ! -d "$ran_scripts" ]; then
-	mkdir $ran_scripts
-fi
-
 # This script should only run on first vagrant up
 if [ -f "$ran_scripts/firewall" ]; then
 	exit 0
@@ -35,5 +28,3 @@ service iptables restart
 echo "iptables configured"
 
 touch $ran_scripts/firewall
-
-exit 0

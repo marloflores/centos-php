@@ -61,9 +61,8 @@ Vagrant.configure(2) do |config|
      puppet.manifest_file  = "default.pp"
   end
   
-  $firewall_script = "shell/firewall.sh"
   config.vm.provision "shell" do |s|
-  	s.path = $firewall_script 
+  	s.inline = "/bin/bash /vagrant/shell/bootstrap.sh" 
   end
 
   # Define a Vagrant Push strategy for pushing to Atlas. Other push strategies
