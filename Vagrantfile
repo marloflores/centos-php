@@ -14,18 +14,6 @@ Vagrant.configure(2) do |config|
   # boxes at https://atlas.hashicorp.com/search.
   config.vm.box = "nrel/centos64-64" 
   
-  config.vm.provision :puppet do |puppet|
-     puppet.manifests_path = "puppet/manifests"
-     puppet.module_path = "puppet/modules"
-     puppet.manifest_file  = "default.pp"
-  end
-  
-  $firewall_script = "shell/firewall.sh"
-  config.vm.provision "shell" do |s|
-  	s.name = "Configuring iptables..."
-  	s.path = $firewall_script 
-  end
-
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
   # `vagrant box outdated`. This is not recommended.
@@ -65,6 +53,18 @@ Vagrant.configure(2) do |config|
   #
   # View the documentation for the provider you are using for more
   # information on available options.
+
+  
+  config.vm.provision :puppet do |puppet|
+     puppet.manifests_path = "puppet/manifests"
+     puppet.module_path = "puppet/modules"
+     puppet.manifest_file  = "default.pp"
+  end
+  
+  $firewall_script = "shell/firewall.sh"
+  config.vm.provision "shell" do |s|
+  	s.path = $firewall_script 
+  end
 
   # Define a Vagrant Push strategy for pushing to Atlas. Other push strategies
   # such as FTP and Heroku are also available. See the documentation at
