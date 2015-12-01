@@ -1,7 +1,30 @@
 class { 'php':
 }
 
-class { 'mysql' :
+
+class mysql {
+
+    class { '::mysql::server':
+        root_password => "123",
+        remove_default_accounts => true,
+        override_options => {
+            mysqld => {
+                "bind_address"  => "0.0.0.0",
+            }
+        },
+        databases => {
+          'vagrant' => {
+            ensure  => 'present',
+            charset => 'utf8',
+          },
+        },
+        users => {
+          'vagrant@%' => {
+            ensure          => 'present',
+            password_hash   => mysql_password("vagrant"),
+          },
+        },
+    }
 }
 
 class { 'apache':
@@ -24,4 +47,5 @@ class vhost {
 include vhost
 include apache
 include php
+include mysql
 
