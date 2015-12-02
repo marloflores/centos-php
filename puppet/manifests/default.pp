@@ -1,5 +1,8 @@
-class { 'php':
+class project::php {
+    class { 'php': }
 }
+
+::php::module { "mysql": }
 
 
 class mysql {
@@ -24,6 +27,15 @@ class mysql {
             password_hash   => mysql_password("vagrant"),
           },
         },
+        grants => {
+          'vagrant@%/vagrant.*' => {
+            ensure     => 'present',
+            options    => ['GRANT'],
+            privileges => ['ALL'],
+            table      => 'vagrant.*',
+            user       => 'vagrant@%',
+          },
+        }
     }
 }
 
