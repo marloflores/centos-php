@@ -1,4 +1,4 @@
-# Open port 80
+# Configure open ports
 # This script should only run on first vagrant up
 if [ -f "$ran_scripts/firewall" ]; then
 	exit 0
@@ -12,12 +12,7 @@ iptables -A INPUT -p tcp --tcp-flags ALL ALL -j DROP
 iptables -A INPUT -i lo -j ACCEPT
 iptables -A INPUT -p tcp -m tcp --dport 80 -j ACCEPT
 iptables -A INPUT -p tcp -m tcp --dport 443 -j ACCEPT
-iptables -A INPUT -p tcp -m tcp --dport 25 -j ACCEPT
-iptables -A INPUT -p tcp -m tcp --dport 465 -j ACCEPT
-iptables -A INPUT -p tcp -m tcp --dport 110 -j ACCEPT
-iptables -A INPUT -p tcp -m tcp --dport 995 -j ACCEPT
-iptables -A INPUT -p tcp -m tcp --dport 143 -j ACCEPT
-iptables -A INPUT -p tcp -m tcp --dport 993 -j ACCEPT
+iptables -A INPUT -p tcp -m tcp --dport 3306 -j ACCEPT
 iptables -A INPUT -p tcp -m tcp --dport 22 -j ACCEPT
 iptables -I INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
 iptables -P OUTPUT ACCEPT

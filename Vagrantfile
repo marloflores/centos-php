@@ -23,6 +23,7 @@ Vagrant.configure(2) do |config|
   # within the machine from a port on the host machine. In the example below,
   # accessing "localhost:8080" will access port 80 on the guest machine.
   config.vm.network "forwarded_port", guest: 80, host: 8080
+  config.vm.network "forwarded_port", guest: 3306, host: 33066
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
@@ -56,6 +57,9 @@ Vagrant.configure(2) do |config|
 
   
   config.vm.provision :puppet do |puppet|
+    puppet.facter = {
+      "fqdn" => "centos.dev",
+     }
      puppet.manifests_path = "puppet/manifests"
      puppet.module_path = "puppet/modules"
      puppet.manifest_file  = "default.pp"
