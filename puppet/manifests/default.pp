@@ -4,6 +4,13 @@ class project::php {
 
 ::php::module { "mysql": }
 
+class { 'composer':
+  command_name => 'composer',
+  target_dir   => '/usr/local/bin',
+  user => 'root',
+}
+
+
 
 class mysql {
 
@@ -59,5 +66,6 @@ class vhost {
 include vhost
 include apache
 include php
+include composer
 include mysql
 
