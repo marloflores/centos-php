@@ -51,12 +51,12 @@ class { 'apache':
 }
 
 class vhost { 
-	$php_fragment = "LoadModule php5_module	modules/libphp5.so\nAddHandler php5-script	.php\n\nDirectoryIndex index.html index.php\nAddType text/html	.php\nAddType application/x-httpd-php-source phps"
+	$php_fragment = "\tLoadModule php5_module	modules/libphp5.so\n\tAddHandler php5-script	.php\n\n\tDirectoryIndex index.html index.php\n\tAddType text/html	.php\n\tAddType application/x-httpd-php-source phps\n\n\tSetEnv APP_ENV dev"
 	
 	apache::vhost { 'centos.dev':
 		servername		=> 'centos.dev',
 		port			=> '80',
-		docroot			=> '/vagrant/site',
+		docroot			=> '/vagrant/site/public',
 		docroot_owner	=> 'apache',
 		docroot_group	=> 'apache',
 		custom_fragment	=> $php_fragment,
