@@ -6,5 +6,6 @@ fi
 current_dir="/vagrant/shell"
 source "$current_dir/firewall.sh"
 source "$current_dir/packages.sh"
+source "$current_dir/mcrypt.sh"
 
 exit 0

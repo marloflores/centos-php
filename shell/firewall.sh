@@ -1,7 +1,7 @@
 # Configure open ports
 # This script should only run on first vagrant up
 if [ -f "$ran_scripts/firewall" ]; then
-	exit 0
+	return 0
 fi
 echo "Configuring firewall..."	
 service iptables stop

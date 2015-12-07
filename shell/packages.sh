@@ -1,6 +1,6 @@
 # This script should only run on first vagrant up
 if [ -f "$ran_scripts/packages" ]; then
-	exit 0
+	return 0
 fi
 # install man
 echo "Installing man..."
