@@ -7,4 +7,6 @@ yes | yum install epel-release
 yum install php-mcrypt -y
 echo "Packages php-mcrypt installed"
 
+service httpd restart
+
 touch "$ran_scripts/mcrypt"
