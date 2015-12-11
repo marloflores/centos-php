@@ -5,6 +5,6 @@ if [ -f "$ran_scripts/composer" ]; then
 fi
 
 cd /vagrant/site/
-/usr/local/bin/composer install
+/usr/local/bin/composer install --prefer-dist
 
 touch $ran_scripts/composer
