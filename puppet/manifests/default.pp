@@ -48,6 +48,8 @@ class mysql {
 
 class { 'apache':
 	default_vhost	=> false,
+  user => 'vagrant',
+  group => 'vagrant',
 }
 
 class vhost { 
@@ -56,19 +58,12 @@ class vhost {
 	apache::vhost { 'centos.dev':
 		servername		=> 'centos.dev',
 		port			=> '80',
-		docroot			=> '/home/vagrant/public',
-		docroot_owner	=> 'apache',
-		docroot_group	=> 'apache',
+		docroot			=> '/vagrant/site/public',
+		docroot_owner	=> 'vagrant',
+		docroot_group	=> 'vagrant',
+
 		custom_fragment	=> $php_fragment,
 	}
-}
-
-class laravel {
-  file { "/home/vagrant/app/storage":
-    ensure => 'directory',
-    recurse => true,
-    mode    => 0777,
-  }
 }
 
 include vhost
@@ -76,5 +71,4 @@ include apache
 include php
 include composer
 include mysql
-include laravel
 
