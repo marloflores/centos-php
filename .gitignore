@@ -27,4 +27,4 @@ Temporary Items
 ### Vagrant template
 .vagrant/
 .idea/
-
+site/.bash_history
