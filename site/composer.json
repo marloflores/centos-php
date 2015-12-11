@@ -29,10 +29,7 @@
 		]
 	},
 	"config": {
-		"preferred-install": "dist",
-		"github-oauth": {
-			"github.com": "792f261a3c02d9ea43094a719c2300c46a0c2b96"
-		}
+		"preferred-install": "dist"
 	},
 	"minimum-stability": "dev"
 }
