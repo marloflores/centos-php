@@ -66,9 +66,13 @@ class vhost {
 	}
 }
 
+class { 'git':
+}
+
 include vhost
 include apache
 include php
 include composer
 include mysql
+include git
 
